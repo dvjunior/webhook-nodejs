@@ -1,6 +1,6 @@
 const http = require('http');
 
-const port = 81;
+const port = 80;
 
 function tratarJSON(data) {
     try {
