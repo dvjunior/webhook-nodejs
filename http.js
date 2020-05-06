@@ -1,15 +1,6 @@
-// const express = require('express')
-// const path = require('path')
-// const PORT = process.env.PORT || 5000
-
-// express()
-//   .use(express.static(path.join(__dirname, 'public')))
-//   .get('/', (req, res) => res.send("I'm fine everything is ok here!"))
-//   .post('/', (req, res) => res.send(JSON.stringify(req.body)))
-//   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 const http = require('http');
 
-const port = 5000;
+const port = 443;
 
 function tratarJSON(data) {
     try {
@@ -67,7 +58,6 @@ let listener = http.createServer(function (request, response) {
             body.push(chunk);
         }).on('end', async () => {
             body = Buffer.concat(body).toString();
-            console.log(body);
 
             let data = tratarJSON(body);
             console.log('[' + DataHora() + ']: DATA \n', data);
