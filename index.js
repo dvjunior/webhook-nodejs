@@ -1,27 +1,13 @@
-// const express = require('express')
-// const path = require('path')
-// const PORT = process.env.PORT || 5000
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
 
-// express()
-//   .use(express.static(path.join(__dirname, 'public')))
-//   .get('/', (req, res) => res.send("I'm fine everything is ok here!"))
-//   .post('/', (req, res) => res.send(JSON.stringify(req.body)))
-//   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .get('/', (req, res) => res.send("I'm fine everything is ok here!"))
+  .post('/', (req, res) => res.json(req.body))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
-
-// Require express and body-parser
-const express = require("express")
-const bodyParser = require("body-parser")
-
-// Initialize express and define a port
-const app = express()
-const PORT = 5000
-
-// Tell express to use body-parser's JSON parsing
-app.use(bodyParser.json())
-
-// Start express on the defined port
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
 
 //const http = require('http');
 
