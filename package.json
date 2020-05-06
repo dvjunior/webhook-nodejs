@@ -4,7 +4,7 @@
     "description": "A Simple webhook for tests",
     "main": "index.js",
     "scripts": {
-        "start": "node index.js"
+        "start": "npm start"
     },
     "dependencies": {
         "request": "2.88.2"
