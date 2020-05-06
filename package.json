@@ -2,5 +2,8 @@
     "name": "webhook-djr",
     "version": "1.0.0",
     "description": "A Simple webhook for tests",
-    "main": "index.js"
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    }
 }
