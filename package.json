@@ -1,0 +1,6 @@
+{
+    "name": "webhook-djr",
+    "version": "1.0.0",
+    "description": "A Simple webhook for tests",
+    "main": "index.js"
+}
