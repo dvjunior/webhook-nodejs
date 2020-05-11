@@ -5,6 +5,30 @@ const PORT = process.env.PORT || 5000
 
 const app = express().use(bodyParser.json()); // creates http server
 
+let payload = {
+  "expectUserResponse": true,
+  "expectedInputs": [
+    {
+      "possibleIntents": [
+        {
+          "intent": "actions.intent.TEXT"
+        }
+      ],
+      "inputPrompt": {
+        "richInitialPrompt": {
+          "items": [
+            {
+              "simpleResponse": {
+                "textToSpeech": "You are using the Actions SDK. Do you want to hear more about it?"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+};
+
 app.get('/', (req, res) => {
   // return challenge
   return res.end("I'm fine everything is ok here!");
@@ -12,7 +36,7 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   console.log(req.body);
-  return res.json(req.body);
+  return res.json(payload);
 });
 
 app.listen(PORT, () => console.log('[BotEngine] Webhook is listening'));
