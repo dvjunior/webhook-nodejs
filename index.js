@@ -6,25 +6,54 @@ const PORT = process.env.PORT || 5000
 const app = express().use(bodyParser.json()); // creates http server
 
 let payload = {
-  "expectUserResponse": true,
-  "expectedInputs": [
-    {
-      "possibleIntents": [
-        {
-          "intent": "actions.intent.TEXT"
-        }
-      ],
-      "inputPrompt": {
-        "richInitialPrompt": {
-          "items": [
-            {
-              "simpleResponse": {
-                "textToSpeech": "You are using the Actions SDK. Do you want to hear more about it?"
-              }
-            }
-          ]
-        }
+  "device": {},
+  "surface": {
+    "capabilities": [
+      {
+        "name": "actions.capability.SCREEN_OUTPUT"
+      },
+      {
+        "name": "actions.capability.AUDIO_OUTPUT"
+      },
+      {
+        "name": "actions.capability.MEDIA_RESPONSE_AUDIO"
+      },
+      {
+        "name": "actions.capability.WEB_BROWSER"
       }
+    ]
+  },
+  "conversation": {
+    "conversationId": "1521784527171",
+    "type": "NEW"
+  },
+  "inputs": [
+    {
+      "intent": "actions.intent.MAIN",
+      "rawInputs": [
+        {
+          "inputType": "VOICE",
+          "query": "Talk to my test app"
+        }
+      ]
+    }
+  ],
+  "availableSurfaces": [
+    {
+      "capabilities": [
+        {
+          "name": "actions.capability.SCREEN_OUTPUT"
+        },
+        {
+          "name": "actions.capability.AUDIO_OUTPUT"
+        },
+        {
+          "name": "actions.capability.MEDIA_RESPONSE_AUDIO"
+        },
+        {
+          "name": "actions.capability.WEB_BROWSER"
+        }
+      ]
     }
   ]
 };
