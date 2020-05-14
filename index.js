@@ -5,58 +5,47 @@ const PORT = process.env.PORT || 5000
 
 const app = express().use(bodyParser.json()); // creates http server
 
-let payload = {
-  "device": {},
-  "surface": {
-    "capabilities": [
-      {
-        "name": "actions.capability.SCREEN_OUTPUT"
+let payload =     {
+      "fulfillmentText": "This is a text response",
+      "source": "example.com",
+      "payload": {
+        "google": {
+          "expectUserResponse": true,
+          "richResponse": {
+            "items": [
+              {
+                "simpleResponse": {
+                  "textToSpeech": "this is a simple response"
+                }
+              }
+            ]
+          }
+        },
+        "facebook": {
+          "text": "Hello, Facebook!"
+        },
+        "slack": {
+          "text": "This is a text response for Slack."
+        }
       },
-      {
-        "name": "actions.capability.AUDIO_OUTPUT"
-      },
-      {
-        "name": "actions.capability.MEDIA_RESPONSE_AUDIO"
-      },
-      {
-        "name": "actions.capability.WEB_BROWSER"
+      "outputContexts": [
+        {
+          "name": "projects/boss-93255/agent/sessions/session-id/contexts/context-name",
+          "lifespanCount": 5,
+          "parameters": {
+            "param-name": "param-value"
+          }
+        }
+      ],
+      "followupEventInput": {
+        "name": "event name",
+        "languageCode": "en-US",
+        "parameters": {
+          "param-name": "param-value"
+        }
       }
-    ]
-  },
-  "conversation": {
-    "conversationId": "1521784527171",
-    "type": "NEW"
-  },
-  "inputs": [
-    {
-      "intent": "actions.intent.MAIN",
-      "rawInputs": [
-        {
-          "inputType": "VOICE",
-          "query": "Talk to my test app"
-        }
-      ]
-    }
-  ],
-  "availableSurfaces": [
-    {
-      "capabilities": [
-        {
-          "name": "actions.capability.SCREEN_OUTPUT"
-        },
-        {
-          "name": "actions.capability.AUDIO_OUTPUT"
-        },
-        {
-          "name": "actions.capability.MEDIA_RESPONSE_AUDIO"
-        },
-        {
-          "name": "actions.capability.WEB_BROWSER"
-        }
-      ]
-    }
-  ]
-};
+    };
+    
 
 app.get('/', (req, res) => {
   // return challenge
