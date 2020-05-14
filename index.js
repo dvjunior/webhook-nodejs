@@ -77,62 +77,79 @@ app.post('/', (req, res) => {
   let intent_id = object_intent[4];
   console.log(project_id, intent_id, session_id);
 
+  // let payload = {
+  //   fulfillmentText: 'This is a text response',
+  //   fulfillmentMessages: [
+  //     {
+  //       card: {
+  //         title: 'card title',
+  //         subtitle: 'card text',
+  //         imageUri: 'https://example.com/images/example.png',
+  //         buttons: [
+  //           {
+  //             text: 'button text',
+  //             postback: 'https://example.com/path/for/end-user/to/follow'
+  //           }
+  //         ]
+  //       }
+  //     }
+  //   ],
+  //   source: 'example.com',
+  //   payload: {
+  //     google: {
+  //       expectUserResponse: true,
+  //       richResponse: {
+  //         items: [
+  //           {
+  //             simpleResponse: {
+  //               textToSpeech: 'this is a simple response'
+  //             }
+  //           }
+  //         ]
+  //       }
+  //     },
+  //     facebook: {
+  //       text: 'Hello, Facebook!'
+  //     },
+  //     slack: {
+  //       text: 'This is a text response for Slack.'
+  //     }
+  //   },
+  //   outputContexts: [
+  //     {
+  //       name: "projects/" + project_id +"/agent/sessions/" + session_id + "/contexts/__system_counters__",
+  //       lifespanCount: 5,
+  //       parameters: {
+  //         'param-name': 'param-value'
+  //       }
+  //     }
+  //   ],
+  //   followupEventInput: {
+  //     name: 'event name',
+  //     languageCode: 'en-US',
+  //     parameters: {
+  //       'param-name': 'param-value'
+  //     }
+  //   }
+  // };
+
   let payload = {
-    fulfillmentText: 'This is a text response',
-    fulfillmentMessages: [
-      {
-        card: {
-          title: 'card title',
-          subtitle: 'card text',
-          imageUri: 'https://example.com/images/example.png',
-          buttons: [
+    "payload": {
+      "google": {
+        "expectUserResponse": true,
+        "richResponse": {
+          "items": [
             {
-              text: 'button text',
-              postback: 'https://example.com/path/for/end-user/to/follow'
-            }
-          ]
-        }
-      }
-    ],
-    source: 'example.com',
-    payload: {
-      google: {
-        expectUserResponse: true,
-        richResponse: {
-          items: [
-            {
-              simpleResponse: {
-                textToSpeech: 'this is a simple response'
+              "simpleResponse": {
+                "textToSpeech": "this is a simple response"
               }
             }
           ]
         }
-      },
-      facebook: {
-        text: 'Hello, Facebook!'
-      },
-      slack: {
-        text: 'This is a text response for Slack.'
-      }
-    },
-    outputContexts: [
-      {
-        name: "projects/" + project_id +"/agent/sessions/" + session_id + "/contexts/__system_counters__",
-        lifespanCount: 5,
-        parameters: {
-          'param-name': 'param-value'
-        }
-      }
-    ],
-    followupEventInput: {
-      name: 'event name',
-      languageCode: 'en-US',
-      parameters: {
-        'param-name': 'param-value'
       }
     }
   };
-
+  
   console.log(JSON.stringify(req.body));
   return res.json(payload);
 });
