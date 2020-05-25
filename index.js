@@ -69,13 +69,13 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  let data = req.body;
-  let object_intent = data.queryResult.intent.name.split('/');
-  let session = data.session.split('/');
-  let session_id = session[4];
-  let project_id = object_intent[1];
-  let intent_id = object_intent[4];
-  console.log(project_id, intent_id, session_id);
+    ////let data = req.body;
+   // //let object_intent = data.queryResult.intent.name.split('/');
+   // //let session = data.session.split('/');
+   // //let session_id = session[4];
+   // //let project_id = object_intent[1];
+   // //let intent_id = object_intent[4];
+   // //console.log(project_id, intent_id, session_id);
 
   // let payload = {
   //   fulfillmentText: 'This is a text response',
