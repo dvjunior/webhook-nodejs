@@ -164,8 +164,8 @@ app.post('/', (req, res) => {
           "items": [
             {
               "simpleResponse": {
-                "textToSpeech": "Here's an example of a simple response. Which type of response would you like to see next?",
-                "displayText": "Here's a simple response. Which response would you like to see next?"
+                "textToSpeech": "<speak>Here's an example of a simple response. Which type of response would you like to see next?</speak>",
+                "displayText": "<speak>Here's a simple response. Which response would you like to see next?</speak>"
               }
             }
           ]
