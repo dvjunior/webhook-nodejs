@@ -150,8 +150,33 @@ app.post('/', (req, res) => {
     }
   };
   
+  let payload_sdk = {
+  "expectUserResponse": true,
+  "expectedInputs": [
+    {
+      "possibleIntents": [
+        {
+          "intent": "actions.intent.TEXT"
+        }
+      ],
+      "inputPrompt": {
+        "richInitialPrompt": {
+          "items": [
+            {
+              "simpleResponse": {
+                "textToSpeech": "Here's an example of a simple response. Which type of response would you like to see next?",
+                "displayText": "Here's a simple response. Which response would you like to see next?"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+};
+  
   console.log(JSON.stringify(req.body));
-  return res.json(payload);
+  return res.json(payload_sdk);
 });
 
 app.listen(PORT, () => console.log('[BotEngine] Webhook is listening'));
