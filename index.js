@@ -240,12 +240,14 @@ app.post('/', (req, res) => {
 };
   
   try{
-    console.log(JSON.stringify(req.body));  
+    console.log(JSON.stringify(req.body));
+    let corpo = JSON.parse(req.body);
+    console.log('CORPO', corpo);
   }catch(error){
      console.log('error :', error);
   }
   
-  if(req.body.inputs.rawInputs.query !== 'Falar com o app BOSS2') {
+  if(corpo.inputs.rawInputs.query !== 'Falar com o app BOSS2') {
     return res.json(payload_transaction);
   }
   
