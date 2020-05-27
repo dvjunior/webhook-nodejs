@@ -245,6 +245,10 @@ app.post('/', (req, res) => {
      console.log('error :', error);
   }
   
+  if(req.body.inputs.rawInputs.query !== 'Falar com o app BOSS2') {
+    return res.json(payload_transaction);
+  }
+  
   return res.json(payload_sdk);
 });
 
