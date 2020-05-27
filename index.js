@@ -203,8 +203,45 @@ app.post('/', (req, res) => {
   ]
 };
   
+  let payload_transaction = {
+  "expectUserResponse": true,
+  "expectedInputs": [
+    {
+      "inputPrompt": {
+        "richInitialPrompt": {
+          "items": [
+            {
+              "orderOptions": {
+                "requestDeliveryAddress": false
+              },
+              "paymentOptions": {
+                "googleProvidedOptions": {
+                  "prepaidCardDisallowed": false,
+                  "supportedCardNetworks": [
+                    "VISA",
+                    "AMEX",
+                    "DISCOVER",
+                    "MASTERCARD"
+                  ],
+                  "tokenizationParameters": {}
+                }
+              }
+            }
+          ]
+        }
+      },
+      "possibleIntents": [
+        {
+          "intent": "actions.intent.TEXT"
+        }
+      ]
+    }
+  ]
+};
+  
+  
   console.log(JSON.stringify(req.body));
-  return res.json(payload_sdk);
+  return res.json(payload_transaction);
 });
 
 app.listen(PORT, () => console.log('[BotEngine] Webhook is listening'));
