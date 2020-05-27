@@ -204,7 +204,7 @@ app.post('/', (req, res) => {
 };
   
   console.log(JSON.stringify(req.body));
-  return res.json(payload);
+  return res.json(payload_sdk);
 });
 
 app.listen(PORT, () => console.log('[BotEngine] Webhook is listening'));
