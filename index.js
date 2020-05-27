@@ -164,8 +164,8 @@ app.post('/', (req, res) => {
           "items": [
             {
               "simpleResponse": {
-                "textToSpeech": "Here's an example of a simple response. Which type of response would you like to see next?",
-                "displayText": "Here's a simple response. Which response would you like to see next?"
+                "textToSpeech": "Olá, eu sou o Boss!",
+                "displayText": "Olá, eu sou o Boss!"
               }
             }
           ]
@@ -239,9 +239,13 @@ app.post('/', (req, res) => {
   ]
 };
   
+  try{
+    console.log(JSON.stringify(req.body));  
+  }catch(error){
+     console.log('error :', error);
+  }
   
-  console.log(req.body);
-  return res.json(payload_transaction);
+  return res.json(payload_sdk);
 });
 
 app.listen(PORT, () => console.log('[BotEngine] Webhook is listening'));
