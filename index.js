@@ -174,9 +174,37 @@ app.post('/', (req, res) => {
     }
   ]
 };
+
+  let payload_sigin = {
+  "expectUserResponse": true,
+  "expectedInputs": [
+    {
+      "inputPrompt": {
+        "richInitialPrompt": {
+          "items": [
+            {
+              "simpleResponse": {
+                "textToSpeech": "PLACEHOLDER"
+              }
+            }
+          ]
+        }
+      },
+      "possibleIntents": [
+        {
+          "intent": "actions.intent.SIGN_IN",
+          "inputValueData": {
+            "@type": "type.googleapis.com/google.actions.v2.SignInValueSpec",
+            "optContext": ""
+          }
+        }
+      ]
+    }
+  ]
+};
   
   console.log(JSON.stringify(req.body));
-  return res.json(payload_sdk);
+  return res.json(payload_sigin);
 });
 
 app.listen(PORT, () => console.log('[BotEngine] Webhook is listening'));
