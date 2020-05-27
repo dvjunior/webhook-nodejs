@@ -3,8 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
-//const app = express().use(bodyParser.json()); // creates http server
-const app = express();
+const app = express().use(bodyParser.json())
 
 let payload = {
   fulfillmentText: 'This is a text response',
@@ -241,7 +240,7 @@ app.post('/', (req, res) => {
 };
   
   
-  console.log(JSON.stringify(req.body));
+  console.log(req.body);
   return res.json(payload_transaction);
 });
 
