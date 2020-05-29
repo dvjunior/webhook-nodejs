@@ -309,7 +309,7 @@ app.post('/', (req, res) => {
     //return JSON.stringify(payload_option);
     console.log('entrou no if');
     return res.json(payload_option);
-  } else if (req.body.inputs[0].rawInputs[0].query == 'mbb' or req.body.inputs[0].rawInputs[0].query == 'MBB') {
+  } else if (req.body.inputs[0].rawInputs[0].query == 'mbb' || req.body.inputs[0].rawInputs[0].query == 'MBB') {
     console.log('entrou no else');
     return res.json(payload_teste);
   }
