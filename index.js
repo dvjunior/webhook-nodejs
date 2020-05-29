@@ -289,8 +289,8 @@ app.post('/', (req, res) => {
   }
   
   if(req.body.inputs[0].rawInputs[0].query !== 'Falar com o app BOSS2') {
-    console.log(res.json(payload_transaction));
-    return JSON.stringify(payload_transaction);
+    console.log(res.json(payload_option));
+    return JSON.stringify(payload_option);
   }
   
   return res.json(payload_sdk);
