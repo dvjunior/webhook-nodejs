@@ -229,7 +229,7 @@ app.post('/', (req, res) => {
                     "url": "https://storage.googleapis.com/actionsresources/logo_assistant_2x_64dp.png",
                     "accessibilityText": "Image alternate text"
                   },
-                  "title": "Title of First List Item"
+                  "title": "WAY"
                 },
                 {
                   "optionInfo": {
@@ -244,7 +244,7 @@ app.post('/', (req, res) => {
                     "url": "https://storage.googleapis.com/actionsresources/logo_assistant_2x_64dp.png",
                     "accessibilityText": "Google Home"
                   },
-                  "title": "Google Home"
+                  "title": "IBPF"
                 },
                 {
                   "optionInfo": {
@@ -260,7 +260,7 @@ app.post('/', (req, res) => {
                     "url": "https://storage.googleapis.com/actionsresources/logo_assistant_2x_64dp.png",
                     "accessibilityText": "Google Pixel"
                   },
-                  "title": "Google Pixel"
+                  "title": "MBB"
                 }
               ]
             }
@@ -272,7 +272,7 @@ app.post('/', (req, res) => {
           "items": [
             {
               "simpleResponse": {
-                "textToSpeech": "This is a list example."
+                "textToSpeech": "Selecione uma sigla abaixo:"
               }
             }
           ]
