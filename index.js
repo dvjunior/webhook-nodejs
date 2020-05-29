@@ -305,7 +305,7 @@ app.post('/', (req, res) => {
      console.log('error :', error);
   }
   
-  if(req.body.inputs[0].rawInputs[0].query !== 'Falar com o app BOSS2' && !== 'mbb') {
+  if(req.body.inputs[0].rawInputs[0].query !== 'Falar com o app BOSS2' && req.body.inputs[0].rawInputs[0].query !== 'mbb') {
     //return JSON.stringify(payload_option);
     console.log('entrou no if');
     return res.json(payload_option);
