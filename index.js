@@ -213,7 +213,7 @@ app.post('/', (req, res) => {
           "inputValueData": {
             "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
             "listSelect": {
-              "title": "List Title",
+              "title": "Selecione uma sigla abaixo:",
               "items": [
                 {
                   "optionInfo": {
