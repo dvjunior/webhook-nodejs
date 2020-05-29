@@ -287,11 +287,23 @@ app.post('/', (req, res) => {
   "expectUserResponse": true,
   "expectedInputs": [
     {
+      "inputPrompt": {
+        "richInitialPrompt": {
+          "items": [
+            {
+              "simpleResponse": {
+                "textToSpeech": "PLACEHOLDER"
+              }
+            }
+          ]
+        }
+      },
       "possibleIntents": [
         {
           "intent": "actions.intent.SIGN_IN",
           "inputValueData": {
-            "@type": "type.googleapis.com/google.actions.v2.SignInValueSpec"
+            "@type": "type.googleapis.com/google.actions.v2.SignInValueSpec",
+            "optContext": ""
           }
         }
       ]
