@@ -282,16 +282,90 @@ app.post('/', (req, res) => {
   ]
 };
   
+  
+  let payload_teste = {
+  "user": {
+    "locale": "en-US",
+    "lastSeen": "2019-08-06T07:37:53Z",
+    "userVerificationStatus": "VERIFIED"
+  },
+  "conversation": {
+    "conversationId": "ABwppHGcqunXh1M6IE0lu2sVqXdpJfdpC5FWMkMSXQskK1nzb4IkSUSRqQzoEr0Ly0z_G3mwyZlk5rFtd1w",
+    "type": "NEW"
+  },
+  "inputs": [
+    {
+      "intent": "actions.intent.OPTION",
+      "rawInputs": [
+        {
+          "inputType": "TOUCH",
+          "query": "Google Home"
+        }
+      ],
+      "arguments": [
+        {
+          "name": "OPTION",
+          "textValue": "SELECTION_KEY_GOOGLE_HOME"
+        },
+        {
+          "name": "text",
+          "rawText": "Google Home",
+          "textValue": "Google Home"
+        }
+      ]
+    }
+  ],
+  "surface": {
+    "capabilities": [
+      {
+        "name": "actions.capability.AUDIO_OUTPUT"
+      },
+      {
+        "name": "actions.capability.MEDIA_RESPONSE_AUDIO"
+      },
+      {
+        "name": "actions.capability.ACCOUNT_LINKING"
+      },
+      {
+        "name": "actions.capability.SCREEN_OUTPUT"
+      },
+      {
+        "name": "actions.capability.WEB_BROWSER"
+      }
+    ]
+  },
+  "isInSandbox": true,
+  "availableSurfaces": [
+    {
+      "capabilities": [
+        {
+          "name": "actions.capability.WEB_BROWSER"
+        },
+        {
+          "name": "actions.capability.AUDIO_OUTPUT"
+        },
+        {
+          "name": "actions.capability.SCREEN_OUTPUT"
+        }
+      ]
+    }
+  ],
+  "requestType": "SIMULATOR"
+};
+  
   try{
     console.log(JSON.stringify(req.body));
   }catch(error){
      console.log('error :', error);
   }
   
-  if(req.body.inputs[0].rawInputs[0].query !== 'Falar com o app BOSS2') {
+  if(req.body.inputs[0].rawInputs[0].query !== 'Falar com o app BOSS2' && !== 'mbb') {
     //return JSON.stringify(payload_option);
     console.log('entrou no if');
     return res.json(payload_option);
+  } else if (req.body.inputs[0].rawInputs[0].query == 'mbb' or req.body.inputs[0].rawInputs[0].query == 'MBB') {
+    console.log('entrou no else');
+    return res.json(payload_teste);
   }
   
   return res.json(payload_sdk);
