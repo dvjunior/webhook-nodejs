@@ -284,73 +284,19 @@ app.post('/', (req, res) => {
   
   
   let payload_teste = {
-  "user": {
-    "locale": "en-US",
-    "lastSeen": "2019-08-06T07:37:53Z",
-    "userVerificationStatus": "VERIFIED"
-  },
-  "conversation": {
-    "conversationId": "ABwppHGcqunXh1M6IE0lu2sVqXdpJfdpC5FWMkMSXQskK1nzb4IkSUSRqQzoEr0Ly0z_G3mwyZlk5rFtd1w",
-    "type": "NEW"
-  },
-  "inputs": [
+  "expectUserResponse": true,
+  "expectedInputs": [
     {
-      "intent": "actions.intent.OPTION",
-      "rawInputs": [
+      "possibleIntents": [
         {
-          "inputType": "TOUCH",
-          "query": "Google Home"
-        }
-      ],
-      "arguments": [
-        {
-          "name": "OPTION",
-          "textValue": "SELECTION_KEY_GOOGLE_HOME"
-        },
-        {
-          "name": "text",
-          "rawText": "Google Home",
-          "textValue": "Google Home"
+          "intent": "actions.intent.SIGN_IN",
+          "inputValueData": {
+            "@type": "type.googleapis.com/google.actions.v2.SignInValueSpec"
+          }
         }
       ]
     }
-  ],
-  "surface": {
-    "capabilities": [
-      {
-        "name": "actions.capability.AUDIO_OUTPUT"
-      },
-      {
-        "name": "actions.capability.MEDIA_RESPONSE_AUDIO"
-      },
-      {
-        "name": "actions.capability.ACCOUNT_LINKING"
-      },
-      {
-        "name": "actions.capability.SCREEN_OUTPUT"
-      },
-      {
-        "name": "actions.capability.WEB_BROWSER"
-      }
-    ]
-  },
-  "isInSandbox": true,
-  "availableSurfaces": [
-    {
-      "capabilities": [
-        {
-          "name": "actions.capability.WEB_BROWSER"
-        },
-        {
-          "name": "actions.capability.AUDIO_OUTPUT"
-        },
-        {
-          "name": "actions.capability.SCREEN_OUTPUT"
-        }
-      ]
-    }
-  ],
-  "requestType": "SIMULATOR"
+  ]
 };
   
   try{
