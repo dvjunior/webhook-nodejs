@@ -198,12 +198,12 @@ app.post('/', (req, res) => {
             "items": [
               {
                 "simpleResponse": {
-                  "textToSpeech": "O serviço do MBPF esta intermitente, opera em 70%!"
+                  "textToSpeech": "O serviço do MBPF está intermitente, opera em 70%!"
                 }
               },
               {
                 "basicCard": {
-                  "title": "O serviço do MBPF esta intermitente, opera em 70%!",
+                  "title": "O serviço do MBPF está intermitente, opera em 70%!",
                   "subtitle": "",
                   "formattedText": "Foram encontrados 32 problemas no Dynatrace referente ao MBPF",
                   "image": {
@@ -239,16 +239,16 @@ app.post('/', (req, res) => {
             "items": [
               {
                 "simpleResponse": {
-                  "textToSpeech": "O serviço do MBPJ esta fora, opera em 40%!"
+                  "textToSpeech": "O serviço do MBPJ está fora, opera em 40%!"
                 }
               },
               {
                 "basicCard": {
-                  "title": "O serviço do MBPJ esta fora, opera em 40%!",
+                  "title": "O serviço do MBPJ está fora, opera em 40%!",
                   "subtitle": "",
                   "formattedText": "Foram encontrados 128 problemas no Dynatrace referente ao MBPJ",
                   "image": {
-                    "url": "https://freesvg.org/img/jean_victor_balin_cross.png",
+                    "url": "https://images.vectorhq.com/images/previews/62f/red-green-ok-not-ok-icons-39546.png",
                     "accessibilityText": "MBPJ"
                   },
                   "imageDisplayOptions": "CROPPED"
@@ -386,6 +386,7 @@ app.post('/', (req, res) => {
     });
   }
 
+  return res.json(payload_sdk);
 });
 
 app.listen(PORT, () => console.log('[BotEngine] Webhook is listening'));
