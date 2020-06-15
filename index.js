@@ -318,7 +318,7 @@ app.post('/', (req, res) => {
 
   if(triggers.indexOf(query) > -1 ){
     console.log("IN THE ARRAY!")
-    if(query !== 'Falar com o app BOSS2' &&  (query == 'Menu' || query == 'menu' || query == 'lista de siglas' || query == 'Lista')) {
+    if(query == 'Falar com o BOSS' || query == 'Falar com o app BOSS' || query == 'Falar com o app BOSS2' || query == 'Menu' || query == 'menu' || query == 'lista de siglas' || query == 'Lista') {
       //return JSON.stringify(menu);
       return res.json(menu);
     } else if (query == 'mbb' || query == 'MBB') {
