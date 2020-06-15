@@ -284,32 +284,53 @@ app.post('/', (req, res) => {
   
   
   let payload_teste = {
-  "expectUserResponse": true,
-  "expectedInputs": [
-    {
-      "inputPrompt": {
-        "richInitialPrompt": {
-          "items": [
-            {
-              "simpleResponse": {
-                "textToSpeech": "PLACEHOLDER"
+    "expectUserResponse": true,
+    "expectedInputs": [
+      {
+        "possibleIntents": [
+          {
+            "intent": "actions.intent.TEXT"
+          }
+        ],
+        "inputPrompt": {
+          "richInitialPrompt": {
+            "items": [
+              {
+                "simpleResponse": {
+                  "textToSpeech": "Está tudo bem com o MBB, o serviço opera em 98%!"
+                }
+              },
+              {
+                "basicCard": {
+                  "title": "Está tudo bem com o MBB, o serviço opera em 98%!",
+                  "subtitle": "",
+                  "formattedText": "Nenhum proble encontrado no Dynatrace.",
+                  "image": {
+                    "url": "https://cdn.icon-icons.com/icons2/1506/PNG/512/emblemok_103757.png",
+                    "accessibilityText": "MBB"
+                  },
+                  "buttons": [
+                    {
+                      "title": "This is a button",
+                      "openUrlAction": {
+                        "url": "https://assistant.google.com/"
+                      }
+                    }
+                  ],
+                  "imageDisplayOptions": "CROPPED"
+                }
+              },
+              {
+                "simpleResponse": {
+                  "textToSpeech": "Which response would you like to see next?"
+                }
               }
-            }
-          ]
-        }
-      },
-      "possibleIntents": [
-        {
-          "intent": "actions.intent.SIGN_IN",
-          "inputValueData": {
-            "@type": "type.googleapis.com/google.actions.v2.SignInValueSpec",
-            "optContext": ""
+            ]
           }
         }
-      ]
-    }
-  ]
-};
+      }
+    ]
+  };
   
   try{
     console.log(JSON.stringify(req.body));
