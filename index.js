@@ -316,12 +316,14 @@ app.post('/', (req, res) => {
   
   let query = req.body.inputs[0].rawInputs[0].query;
 
+  if(query == 'Falar com o Boss' || query == 'Falar com o app Boss' || query == 'Falar com o app Boss2' || query == 'Menu' || query == 'menu' || query == 'lista de siglas' || query == 'Lista') {
+    //return JSON.stringify(menu);
+    return res.json(menu);
+  }
+
   if(triggers.indexOf(query) > -1 ){
     console.log("IN THE ARRAY!")
-    if(query == 'Falar com o Boss' || query == 'Falar com o app Boss' || query == 'Falar com o app Boss2' || query == 'Menu' || query == 'menu' || query == 'lista de siglas' || query == 'Lista') {
-      //return JSON.stringify(menu);
-      return res.json(menu);
-    } else if (query == 'mbb' || query == 'MBB') {
+     if (query == 'mbb' || query == 'MBB') {
       console.log('entrou no else');
       return res.json(mbb);
     } else if (query == 'way' || query == 'WAY' || query == "W A Y"){
@@ -386,7 +388,6 @@ app.post('/', (req, res) => {
     });
   }
 
-  return res.json(payload_sdk);
 });
 
 app.listen(PORT, () => console.log('[BotEngine] Webhook is listening'));
