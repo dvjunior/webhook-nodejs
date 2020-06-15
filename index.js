@@ -4,64 +4,36 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 const app = express().use(bodyParser.json())
+   
 
-let payload = {
-  fulfillmentText: 'This is a text response',
-  fulfillmentMessages: [
-    {
-      card: {
-        title: 'card title',
-        subtitle: 'card text',
-        imageUri: 'https://example.com/images/example.png',
-        buttons: [
-          {
-            text: 'button text',
-            postback: 'https://example.com/path/for/end-user/to/follow'
-          }
-        ]
-      }
-    }
-  ],
-  source: 'example.com',
-  payload: {
-    google: {
-      expectUserResponse: true,
-      richResponse: {
-        items: [
-          {
-            simpleResponse: {
-              textToSpeech: 'this is a simple response'
-            }
-          }
-        ]
-      }
-    },
-    facebook: {
-      text: 'Hello, Facebook!'
-    },
-    slack: {
-      text: 'This is a text response for Slack.'
-    }
-  },
-  outputContexts: [
-    {
-      name: "",
-      lifespanCount: 5,
-      parameters: {
-        'param-name': 'param-value'
-      }
-    }
-  ],
-  followupEventInput: {
-    name: 'event name',
-    languageCode: 'en-US',
-    parameters: {
-      'param-name': 'param-value'
-    }
-  }
-};
-
-    
+let triggers = [
+  "MBPF",
+  "Mobile Banking Pessoa Física",
+  "mbpf",
+  "Pessoa Física",
+  "MBPJ",
+  "Mobile Banking Pessoa Jurídica",
+  "MBPJ",
+  "Mobile Pessoa Jurídica",
+  "IBPJ",
+  "Internet Banking Pessoa Jurídica",
+  "ibpj",
+  "IB Pessoa Jurídica",
+  "IBPF",
+  "Internet Banking Pessoa Física",
+  "ibpf",
+  "IB Pessoa Física",
+  "WAY",
+  "Whey",
+  "W A Y",
+  "way",
+  "uei",
+  "MBB",
+  "mbb",
+  "M B B",
+  "Mobile",
+  "Mobile Banking"
+];
 
 app.get('/', (req, res) => {
   // return challenge
@@ -69,86 +41,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-    ////let data = req.body;
-   // //let object_intent = data.queryResult.intent.name.split('/');
-   // //let session = data.session.split('/');
-   // //let session_id = session[4];
-   // //let project_id = object_intent[1];
-   // //let intent_id = object_intent[4];
-   // //console.log(project_id, intent_id, session_id);
-
-  // let payload = {
-  //   fulfillmentText: 'This is a text response',
-  //   fulfillmentMessages: [
-  //     {
-  //       card: {
-  //         title: 'card title',
-  //         subtitle: 'card text',
-  //         imageUri: 'https://example.com/images/example.png',
-  //         buttons: [
-  //           {
-  //             text: 'button text',
-  //             postback: 'https://example.com/path/for/end-user/to/follow'
-  //           }
-  //         ]
-  //       }
-  //     }
-  //   ],
-  //   source: 'example.com',
-  //   payload: {
-  //     google: {
-  //       expectUserResponse: true,
-  //       richResponse: {
-  //         items: [
-  //           {
-  //             simpleResponse: {
-  //               textToSpeech: 'this is a simple response'
-  //             }
-  //           }
-  //         ]
-  //       }
-  //     },
-  //     facebook: {
-  //       text: 'Hello, Facebook!'
-  //     },
-  //     slack: {
-  //       text: 'This is a text response for Slack.'
-  //     }
-  //   },
-  //   outputContexts: [
-  //     {
-  //       name: "projects/" + project_id +"/agent/sessions/" + session_id + "/contexts/__system_counters__",
-  //       lifespanCount: 5,
-  //       parameters: {
-  //         'param-name': 'param-value'
-  //       }
-  //     }
-  //   ],
-  //   followupEventInput: {
-  //     name: 'event name',
-  //     languageCode: 'en-US',
-  //     parameters: {
-  //       'param-name': 'param-value'
-  //     }
-  //   }
-  // };
-
-  let payload = {
-    "payload": {
-      "google": {
-        "expectUserResponse": true,
-        "richResponse": {
-          "items": [
-            {
-              "simpleResponse": {
-                "textToSpeech": "this is a simple response"
-              }
-            }
-          ]
-        }
-      }
-    }
-  };
+    
   
   let payload_sdk = {
   "expectUserResponse": true,
@@ -175,35 +68,8 @@ app.post('/', (req, res) => {
   ]
 };
 
-  let payload_sigin = {
-  "expectUserResponse": true,
-  "expectedInputs": [
-    {
-      "inputPrompt": {
-        "richInitialPrompt": {
-          "items": [
-            {
-              "simpleResponse": {
-                "textToSpeech": "PLACEHOLDER"
-              }
-            }
-          ]
-        }
-      },
-      "possibleIntents": [
-        {
-          "intent": "actions.intent.SIGN_IN",
-          "inputValueData": {
-            "@type": "type.googleapis.com/google.actions.v2.SignInValueSpec",
-            "optContext": "teste de login"
-          }
-        }
-      ]
-    }
-  ]
-};
   
-  let payload_option = {
+  let menu = {
   "expectUserResponse": true,
   "expectedInputs": [
     {
@@ -283,7 +149,7 @@ app.post('/', (req, res) => {
 };
   
   
-  let payload_teste = {
+  let mbb = {
     "expectUserResponse": true,
     "expectedInputs": [
       {
@@ -304,25 +170,17 @@ app.post('/', (req, res) => {
                 "basicCard": {
                   "title": "Está tudo bem com o MBB, o serviço opera em 98%!",
                   "subtitle": "",
-                  "formattedText": "Nenhum proble encontrado no Dynatrace.",
+                  "formattedText": "Nenhum problema encontrado no Dynatrace.",
                   "image": {
                     "url": "https://cdn.icon-icons.com/icons2/1506/PNG/512/emblemok_103757.png",
                     "accessibilityText": "MBB"
                   },
-                  "buttons": [
-                    {
-                      "title": "This is a button",
-                      "openUrlAction": {
-                        "url": "https://assistant.google.com/"
-                      }
-                    }
-                  ],
                   "imageDisplayOptions": "CROPPED"
                 }
               },
               {
                 "simpleResponse": {
-                  "textToSpeech": "Which response would you like to see next?"
+                  "textToSpeech": "Nenhum problema encontrado no Dynatrace. Ajudo com algo mais?"
                 }
               }
             ]
@@ -338,13 +196,19 @@ app.post('/', (req, res) => {
      console.log('error :', error);
   }
   
-  if(req.body.inputs[0].rawInputs[0].query !== 'Falar com o app BOSS2' && req.body.inputs[0].rawInputs[0].query !== 'mbb') {
-    //return JSON.stringify(payload_option);
+  let query = req.body.inputs[0].rawInputs[0].query;
+
+  if(triggers.indexOf(query) > -1 ){
+    console.log("IN THE ARRAY!")
+  }
+
+  if(query !== 'Falar com o app BOSS2' && query !== 'mbb') {
+    //return JSON.stringify(menu);
     console.log('entrou no if');
-    return res.json(payload_option);
-  } else if (req.body.inputs[0].rawInputs[0].query == 'mbb' || req.body.inputs[0].rawInputs[0].query == 'MBB') {
+    return res.json(menu);
+  } else if (query == 'mbb' || query == 'MBB') {
     console.log('entrou no else');
-    return res.json(payload_teste);
+    return res.json(mbb);
   }
   
   return res.json(payload_sdk);
