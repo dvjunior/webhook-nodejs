@@ -15,14 +15,6 @@ let triggers = [
   "Mobile Banking Pessoa Jurídica",
   "MBPJ",
   "Mobile Pessoa Jurídica",
-  "IBPJ",
-  "Internet Banking Pessoa Jurídica",
-  "ibpj",
-  "IB Pessoa Jurídica",
-  "IBPF",
-  "Internet Banking Pessoa Física",
-  "ibpf",
-  "IB Pessoa Física",
   "WAY",
   "Whey",
   "W A Y",
@@ -189,7 +181,133 @@ app.post('/', (req, res) => {
       }
     ]
   };
-  
+
+
+
+  let mbpf = {
+    "expectUserResponse": true,
+    "expectedInputs": [
+      {
+        "possibleIntents": [
+          {
+            "intent": "actions.intent.TEXT"
+          }
+        ],
+        "inputPrompt": {
+          "richInitialPrompt": {
+            "items": [
+              {
+                "simpleResponse": {
+                  "textToSpeech": "O serviço do MBPF esta intermitente, opera em 70%!"
+                }
+              },
+              {
+                "basicCard": {
+                  "title": "O serviço do MBPF esta intermitente, opera em 70%!",
+                  "subtitle": "",
+                  "formattedText": "Foram encontrados 32 problemas no Dynatrace referente ao MBPF",
+                  "image": {
+                    "url": "https://www.pe.com/wp-content/uploads/2018/01/rpe-bus-bestlaw-warning.jpg",
+                    "accessibilityText": "MBPF"
+                  },
+                  "imageDisplayOptions": "CROPPED"
+                }
+              },
+              {
+                "simpleResponse": {
+                  "textToSpeech": "Foram encontrados 32 problemas no Dynatrace referente ao MBPF. Contate a área responsável!"
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  };
+
+  let mbpj = {
+    "expectUserResponse": true,
+    "expectedInputs": [
+      {
+        "possibleIntents": [
+          {
+            "intent": "actions.intent.TEXT"
+          }
+        ],
+        "inputPrompt": {
+          "richInitialPrompt": {
+            "items": [
+              {
+                "simpleResponse": {
+                  "textToSpeech": "O serviço do MBPJ esta fora, opera em 40%!"
+                }
+              },
+              {
+                "basicCard": {
+                  "title": "O serviço do MBPJ esta fora, opera em 40%!",
+                  "subtitle": "",
+                  "formattedText": "Foram encontrados 128 problemas no Dynatrace referente ao MBPJ",
+                  "image": {
+                    "url": "https://freesvg.org/img/jean_victor_balin_cross.png",
+                    "accessibilityText": "MBPJ"
+                  },
+                  "imageDisplayOptions": "CROPPED"
+                }
+              },
+              {
+                "simpleResponse": {
+                  "textToSpeech": "Foram encontrados 128 problemas no Dynatrace referente ao MBPJ. Contate a área responsável!"
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  };
+
+
+  let way = {
+    "expectUserResponse": true,
+    "expectedInputs": [
+      {
+        "possibleIntents": [
+          {
+            "intent": "actions.intent.TEXT"
+          }
+        ],
+        "inputPrompt": {
+          "richInitialPrompt": {
+            "items": [
+              {
+                "simpleResponse": {
+                  "textToSpeech": "O serviço WAY opera em 100%, tudo ok!"
+                }
+              },
+              {
+                "basicCard": {
+                  "title": "O serviço WAY opera em 100%, tudo ok!",
+                  "subtitle": "",
+                  "formattedText": "Nenhum problema no Dynatrace ou Splunk!",
+                  "image": {
+                    "url": "https://cdn.icon-icons.com/icons2/1506/PNG/512/emblemok_103757.png",
+                    "accessibilityText": "way"
+                  },
+                  "imageDisplayOptions": "CROPPED"
+                }
+              },
+              {
+                "simpleResponse": {
+                  "textToSpeech": "Nenhum problema no Dynatrace ou Splunk!"
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  };
+
   try{
     console.log(JSON.stringify(req.body));
   }catch(error){
@@ -200,18 +318,74 @@ app.post('/', (req, res) => {
 
   if(triggers.indexOf(query) > -1 ){
     console.log("IN THE ARRAY!")
+    if(query !== 'Falar com o app BOSS2' &&  (query == 'Menu' || query == 'menu' || query == 'lista de siglas' || query == 'Lista')) {
+      //return JSON.stringify(menu);
+      return res.json(menu);
+    } else if (query == 'mbb' || query == 'MBB') {
+      console.log('entrou no else');
+      return res.json(mbb);
+    } else if (query == 'way' || query == 'WAY' || query == "W A Y"){
+      console.log('opcap way')
+      return res.json(way);
+    } else if (query == 'mbpf' || query == 'MBPF' || query == "Mobile Banking Pessoa Física" || query == "Mobile Banking Pessoa Fisica"){
+      console.log('opcap mbpf')
+      return res.json(mbpf);
+    } else if (query == 'mbpj' || query == 'MBPJ' || query == "Mobile Banking Pessoa Jurídica" || query == "Mobile Banking Pessoa Juridica"){
+      console.log('opcap mbpj')
+      return res.json(mbpj);
+    } else {
+      return res.json({
+        "expectUserResponse": true,
+        "expectedInputs": [
+          {
+            "possibleIntents": [
+              {
+                "intent": "actions.intent.TEXT"
+              }
+            ],
+            "inputPrompt": {
+              "richInitialPrompt": {
+                "items": [
+                  {
+                    "simpleResponse": {
+                      "textToSpeech": "Sigla não encontrada. Tente mbb ou away por exemplo.",
+                      "displayText": "Sigla não encontrada. Tente mbb ou away por exemplo."
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      });
+    }
+  } else{
+    return res.json({
+      "expectUserResponse": true,
+      "expectedInputs": [
+        {
+          "possibleIntents": [
+            {
+              "intent": "actions.intent.TEXT"
+            }
+          ],
+          "inputPrompt": {
+            "richInitialPrompt": {
+              "items": [
+                {
+                  "simpleResponse": {
+                    "textToSpeech": "Desculpe não encontrei nada a respeito.",
+                    "displayText": "Você pode pedir pelo Menu ou a Lista de siglas caso preferir."
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    });
   }
 
-  if(query !== 'Falar com o app BOSS2' && query !== 'mbb') {
-    //return JSON.stringify(menu);
-    console.log('entrou no if');
-    return res.json(menu);
-  } else if (query == 'mbb' || query == 'MBB') {
-    console.log('entrou no else');
-    return res.json(mbb);
-  }
-  
-  return res.json(payload_sdk);
 });
 
 app.listen(PORT, () => console.log('[BotEngine] Webhook is listening'));
