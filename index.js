@@ -7,24 +7,23 @@ const app = express().use(bodyParser.json())
    
 
 let triggers = [
-  "MBPF",
-  "Mobile Banking Pessoa Física",
+  "mobile banking pessoa física",
+  "mobile banking pessoa fisica",
   "mbpf",
-  "Pessoa Física",
-  "MBPJ",
-  "Mobile Banking Pessoa Jurídica",
+  "pessoa física",
+  "mobile banking pessoa jurídica",
+  "mobile bank pessoa jurídica",
+  "mobile banking pessoa juridica",
   "mbpj",
   "Mobile Pessoa Jurídica",
-  "WAY",
-  "Whey",
-  "W A Y",
+  "whey",
+  "w a y",
   "way",
   "uei",
-  "MBB",
   "mbb",
-  "M B B",
-  "Mobile",
-  "Mobile Banking"
+  "m b b",
+  "mobile",
+  "mobile banking"
 ];
 
 app.get('/', (req, res) => {
@@ -335,7 +334,7 @@ app.post('/', (req, res) => {
     } else if (query == 'mbpf' || query == "mobile banking pessoa física" || query == "mobile banking pessoa fisica"){
       console.log('opcap mbpf')
       return res.json(mbpf);
-    } else if (query == 'mbpj' || query == 'm b p j' || query == "mobile banking pessoa jurídica" || query == "mobile banking pessoa juridica"){
+    } else if (query == 'mbpj' || query == 'm b p j' || query == "mobile banking pessoa jurídica" || query == "mobile banking pessoa juridica" || query ==  "mobile bank pessoa jurídica"){
       console.log('opcap mbpj')
       return res.json(mbpj);
     } else {
