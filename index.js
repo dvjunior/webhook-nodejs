@@ -317,6 +317,8 @@ app.post('/', (req, res) => {
   let query = req.body.inputs[0].rawInputs[0].query;
   query = query.toLowerCase();
 
+  console.log('QUERY', query)
+
   if(query == 'falar com o boss' || query == 'falar com o app boss' || query == 'falar com o app boss2' || query == 'menu' || query == 'lista de siglas' || query == 'lista') {
     //return JSON.stringify(menu);
     return res.json(menu);
@@ -327,7 +329,7 @@ app.post('/', (req, res) => {
      if (query == 'mbb' || query == 'm b b') {
       console.log('entrou no else');
       return res.json(mbb);
-    } else if (query == 'way' || query == 'whey' || query == "w a y"){
+    } else if (query == 'way' || query == 'whey' || query == "w a y"  || query == 'Whey' ){
       console.log('opcap way')
       return res.json(way);
     } else if (query == 'mbpf' || query == "mobile banking pessoa física" || query == "mobile banking pessoa fisica"){
