@@ -315,24 +315,25 @@ app.post('/', (req, res) => {
   }
   
   let query = req.body.inputs[0].rawInputs[0].query;
+  query = query.toLowerCase();
 
-  if(query == 'Falar com o Boss' || query == 'Falar com o app Boss' || query == 'Falar com o app Boss2' || query == 'Menu' || query == 'menu' || query == 'lista de siglas' || query == 'Lista') {
+  if(query == 'falar com o boss' || query == 'falar com o app boss' || query == 'falar com o app boss2' || query == 'menu' || query == 'lista de siglas' || query == 'lista') {
     //return JSON.stringify(menu);
     return res.json(menu);
   }
 
   if(triggers.indexOf(query) > -1 ){
     console.log("IN THE ARRAY!")
-     if (query == 'mbb' || query == 'MBB') {
+     if (query == 'mbb' || query == 'm b b') {
       console.log('entrou no else');
       return res.json(mbb);
-    } else if (query == 'way' || query == 'WAY' || query == "W A Y"){
+    } else if (query == 'way' || query == 'whey' || query == "w a y"){
       console.log('opcap way')
       return res.json(way);
-    } else if (query == 'mbpf' || query == 'MBPF' || query == "Mobile Banking Pessoa Física" || query == "Mobile Banking Pessoa Fisica"){
+    } else if (query == 'mbpf' || query == "mobile banking pessoa física" || query == "mobile banking pessoa fisica"){
       console.log('opcap mbpf')
       return res.json(mbpf);
-    } else if (query == 'mbpj' || query == 'MBPJ' || query == "Mobile Banking Pessoa Jurídica" || query == "Mobile Banking Pessoa Juridica"){
+    } else if (query == 'mbpj' || query == 'm b p j' || query == "mobile banking pessoa jurídica" || query == "mobile banking pessoa juridica"){
       console.log('opcap mbpj')
       return res.json(mbpj);
     } else {
@@ -361,7 +362,7 @@ app.post('/', (req, res) => {
         ]
       });
     }
-  } else{
+  } else {
     return res.json({
       "expectUserResponse": true,
       "expectedInputs": [
