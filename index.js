@@ -318,7 +318,7 @@ app.post('/', (req, res) => {
 
   console.log('QUERY', query)
 
-  if(query == 'falar com o boss' || query == 'falar com o app boss' || query == 'falar com o app boss2' || query == 'menu' || query == 'lista de siglas' || query == 'lista') {
+  if(query == 'falar com o boss' || query == 'falar com o app boss' || query == 'falar com boss' || query == 'menu' || query == 'lista de siglas' || query == 'lista') {
     //return JSON.stringify(menu);
     return res.json(menu);
   }
