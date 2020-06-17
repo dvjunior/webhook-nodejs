@@ -15,6 +15,7 @@ let triggers = [
   "mobile bank pessoa jurídica",
   "mobile banking pessoa juridica",
   "mbpj",
+  "mb pj",
   "Mobile Pessoa Jurídica",
   "whey",
   "w a y",
@@ -334,7 +335,7 @@ app.post('/', (req, res) => {
     } else if (query == 'mbpf' || query == "mobile banking pessoa física" || query == "mobile banking pessoa fisica"){
       console.log('opcap mbpf')
       return res.json(mbpf);
-    } else if (query == 'mbpj' || query == 'm b p j' || query == "mobile banking pessoa jurídica" || query == "mobile banking pessoa juridica" || query ==  "mobile bank pessoa jurídica"){
+    } else if (query == 'mbpj' || query == 'm b p j' || query == 'mb pj' || query == "mobile banking pessoa jurídica" || query == "mobile banking pessoa juridica" || query ==  "mobile bank pessoa jurídica"){
       console.log('opcap mbpj')
       return res.json(mbpj);
     } else {
