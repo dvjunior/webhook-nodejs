@@ -182,6 +182,21 @@ app.post('/', (req, res) => {
     ]
   };
 
+  let login = {
+    "expectUserResponse": true,
+    "expectedInputs": [
+      {
+        "possibleIntents": [
+          {
+            "intent": "actions.intent.SIGN_IN",
+            "inputValueData": {
+              "@type": "type.googleapis.com/google.actions.v2.SignInValueSpec"
+            }
+          }
+        ]
+      }
+    ]
+  };
 
 
   let mbpf = {
@@ -365,30 +380,33 @@ app.post('/', (req, res) => {
       });
     }
   } else {
-    return res.json({
-      "expectUserResponse": true,
-      "expectedInputs": [
-        {
-          "possibleIntents": [
-            {
-              "intent": "actions.intent.TEXT"
-            }
-          ],
-          "inputPrompt": {
-            "richInitialPrompt": {
-              "items": [
-                {
-                  "simpleResponse": {
-                    "textToSpeech": "Desculpe não encontrei nada a respeito.",
-                    "displayText": "Você pode pedir pelo Menu ou a Lista de siglas caso preferir."
-                  }
-                }
-              ]
-            }
-          }
-        }
-      ]
-    });
+    // return res.json({
+    //   "expectUserResponse": true,
+    //   "expectedInputs": [
+    //     {
+    //       "possibleIntents": [
+    //         {
+    //           "intent": "actions.intent.TEXT"
+    //         }
+    //       ],
+    //       "inputPrompt": {
+    //         "richInitialPrompt": {
+    //           "items": [
+    //             {
+    //               "simpleResponse": {
+    //                 "textToSpeech": "Desculpe não encontrei nada a respeito.",
+    //                 "displayText": "Você pode pedir pelo Menu ou a Lista de siglas caso preferir."
+    //               }
+    //             }
+    //           ]
+    //         }
+    //       }
+    //     }
+    //   ]
+    // });
+
+    return res.json(login);
+
   }
 
 });
