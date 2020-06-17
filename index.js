@@ -13,7 +13,7 @@ let triggers = [
   "Pessoa Física",
   "MBPJ",
   "Mobile Banking Pessoa Jurídica",
-  "MBPJ",
+  "mbpj",
   "Mobile Pessoa Jurídica",
   "WAY",
   "Whey",
