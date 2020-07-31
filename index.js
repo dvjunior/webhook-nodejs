@@ -33,6 +33,39 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
+   
+   let fullfilment = {
+    "expectUserResponse": true,
+    "expectedInputs": [
+        {
+            "possibleIntents": [
+                {
+                    "intent": "actions.intent.TEXT"
+                }
+            ],
+            "inputPrompt": {
+                "richInitialPrompt": {
+                    "items": [
+                        {
+                            "simpleResponse": {
+                                "textToSpeech": "Olá eu sou o Boss versão Assistente Virtual. Qual sigla deseja monitorar?",
+                                "displayText": "Olá eu sou o Boss versão Assistente Virtual. \nQual sigla deseja monitorar?"
+                            }
+                        }
+                    ],
+                    "suggestions": [
+                        {
+                            "title": "Menu"
+                        },
+                        {
+                            "title": "Lista de siglas"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+};
     
   
   let payload_sdk = {
@@ -61,7 +94,7 @@ app.post('/', (req, res) => {
 };
 
   
-  let menu = {
+  let menu2 = {
   "expectUserResponse": true,
   "expectedInputs": [
     {
@@ -139,7 +172,178 @@ app.post('/', (req, res) => {
     }
   ]
 };
-  
+
+let menu = {
+    "expectUserResponse": true,
+    "expectedInputs": [
+        {
+            "possibleIntents": [
+                {
+                    "intent": "actions.intent.OPTION",
+                    "inputValueData": {
+                        "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                        "listSelect": {
+                            "title": "Selecione uma sigla abaixo:",
+                            "items": [
+                                {
+                                    "optionInfo": {
+                                        "key": "SELECTION_KEY_AFC",
+                                        "synonyms": [
+                                            "FC",
+                                            "afc",
+                                            "AFC"
+                                        ]
+                                    },
+                                    "description": "afc",
+                                    "title": "AFC"
+                                },
+                                {
+                                    "optionInfo": {
+                                        "key": "SELECTION_KEY_AQC",
+                                        "synonyms": [
+                                            "AQC",
+                                            "a q c"
+                                        ]
+                                    },
+                                    "description": "Serivço aqc",
+                                    "title": "AQC"
+                                },
+                                {
+                                    "optionInfo": {
+                                        "key": "SELECTION_KEY_FEC",
+                                        "synonyms": [
+                                            "FEC",
+                                            "fec"
+                                        ]
+                                    },
+                                    "description": "Fec",
+                                    "title": "FEC"
+                                },
+                                {
+                                    "optionInfo": {
+                                        "key": "SELECTION_KEY_WAY",
+                                        "synonyms": [
+                                            "WAY",
+                                            "WHEY",
+                                            "whey"
+                                        ]
+                                    },
+                                    "description": "Serviço WAY Santander",
+                                    "title": "WAY"
+                                },
+                                {
+                                    "optionInfo": {
+                                        "key": "SELECTION_KEY_IBPF",
+                                        "synonyms": [
+                                            "Internet Banking Pessoa Física",
+                                            "Pessoa Física",
+                                            "IBPF"
+                                        ]
+                                    },
+                                    "description": "Internet Banking Pessoa Física",
+                                    "title": "IBPF"
+                                },
+                                {
+                                    "optionInfo": {
+                                        "key": "SELECTION_KEY_IBPJ",
+                                        "synonyms": [
+                                            "Internet Banking Pessoa Jurídica",
+                                            "Pessoa Jurídica",
+                                            "IBPJ"
+                                        ]
+                                    },
+                                    "description": "Internet Banking Pessoa Jurídica",
+                                    "title": "IBPJ"
+                                },
+                                {
+                                    "optionInfo": {
+                                        "key": "SELECTION_KEY_MBPF",
+                                        "synonyms": [
+                                            "MBPF",
+                                            "Mobile Banking Pessoa Física",
+                                            "Pessoa Física"
+                                        ]
+                                    },
+                                    "description": "Mobile Banking Pessoa Física",
+                                    "title": "MBPF"
+                                },
+                                {
+                                    "optionInfo": {
+                                        "key": "SELECTION_KEY_MBPJ",
+                                        "synonyms": [
+                                            "MBPJ",
+                                            "Mobile Banking Pessoa Jurídica",
+                                            "Pessoa Jurídica"
+                                        ]
+                                    },
+                                    "description": "Mobile Banking Pessoa Jurídica",
+                                    "title": "MBPJ"
+                                },
+                                {
+                                    "optionInfo": {
+                                        "key": "SELECTION_KEY_MOB",
+                                        "synonyms": [
+                                            "MOB",
+                                            "Mob",
+                                            "m o b"
+                                        ]
+                                    },
+                                    "description": "Mob",
+                                    "title": "MOB"
+                                },
+                                {
+                                    "optionInfo": {
+                                        "key": "SELECTION_KEY_MSG",
+                                        "synonyms": [
+                                            "Mensageria"
+                                        ]
+                                    },
+                                    "description": "Mensageria",
+                                    "title": "Mensageria"
+                                },
+                                {
+                                    "optionInfo": {
+                                        "key": "SELECTION_KEY_URA",
+                                        "synonyms": [
+                                            "URA",
+                                            "ura",
+                                            "u r a"
+                                        ]
+                                    },
+                                    "description": "Ura",
+                                    "title": "URA"
+                                },
+                                {
+                                    "optionInfo": {
+                                        "key": "SELECTION_KEY_MBB",
+                                        "synonyms": [
+                                            "MBB",
+                                            "Mobile Banking",
+                                            "Mobile"
+                                        ]
+                                    },
+                                    "description": "Mobile Banking",
+                                    "title": "MBB"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ],
+            "inputPrompt": {
+                "richInitialPrompt": {
+                    "items": [
+                        {
+                            "simpleResponse": {
+                                "textToSpeech": "Selecione uma sigla abaixo:"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+};
   
   let mbb = {
     "expectUserResponse": true,
@@ -336,7 +540,10 @@ app.post('/', (req, res) => {
 
   if(query == 'falar com o boss' || query == 'falar com o app boss' || query == 'falar com boss' || query == 'menu' || query == 'lista de siglas' || query == 'lista') {
     //return JSON.stringify(menu);
-    return res.json(menu);
+    return res.json(fullfilment);
+  }
+  if(query == 'menu' || query == 'Menu' || query == 'Lista' || query == 'Lista de siglas'){
+      return res.json(menu);
   }
 
   if(triggers.indexOf(query) > -1 ){
