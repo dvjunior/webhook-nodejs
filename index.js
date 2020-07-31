@@ -538,7 +538,7 @@ let menu = {
 
   console.log('QUERY', query)
 
-  if(query == 'falar com o boss' || query == 'falar com o app boss' || query == 'falar com boss' || query == 'menu' || query == 'lista de siglas' || query == 'lista') {
+  if(query == 'falar com o boss' || query == 'falar com o app boss' || query == 'falar com boss') {
     //return JSON.stringify(menu);
     return res.json(fullfilment);
   }
